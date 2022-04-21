@@ -2,31 +2,31 @@ import java.util.Arrays;
 
 public class ReverseInt {
 
-
-
     public static void main(String args[]){
 
-        int[] reverseInt = {1,2,3,4,5,6};
+        long startTime = System.nanoTime();
+        System.out.println(Arrays.toString( reverseIt(new int[]{1, 2, 3, 4, 5, 6})));
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Total run time: " + totalTime);
 
-        reverseIt(reverseInt);
     }
 
     private static int[] reverseIt(int[] reverseInt) {
 
-        int len = reverseInt.length;
+        int len = reverseInt.length - 1;
         int temp;
-        int[] reversedArray = new int[len];
+        int start = 0;
 
-        for(int i = 0; i < len; i++){
-
-            temp = reverseInt[i];
-            reversedArray[i] = reverseInt[len-1];
-            reversedArray[len-1] = temp;
+        while(start < len){
+            temp = reverseInt[start];
+            reverseInt[start] = reverseInt[len];
+            reverseInt[len] = temp;
+            start++;
             len--;
         }
 
-        System.out.println("ReveredArray: " + Arrays.toString(reversedArray));
-        return reversedArray;
+        return reverseInt;
     }
 
 }
